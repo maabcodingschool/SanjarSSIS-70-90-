@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2021 8:42:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DN0SVL4"
+  DTS:CreatorName="DESKTOP-DN0SVL4\satim"
+  DTS:DTSID="{76204BA4-5978-40E7-8735-5780A43DE723}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Part107"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B6EF268E-284B-4A85-9D47-A50A7B67870F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{B160567F-03BC-4888-9178-4D677F9C4EF4}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::FTPServer]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerPassword">@[$Package::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerUserName">@[$Package::UserName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="192.168.1.37:21">
+          <DTS:FtpConnection
+            DTS:ServerName="192.168.1.37"
+            DTS:ServerUserName="FTP_1">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE1kMuvsVDkuFgzg0MJdX/wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD0zY9Xkymmgj9IkdkypTG+KSki6nHEdp8KAGwij+VolQAAAAAOgAAAAAIAACAAAAAe9/R+da9XGMs1hrnUp/Pij7FysYPwAND566VSuBXmRxAAAACHTno6AHMptEBcxhqdc7pEQAAAANKDxbpc2RyLVLOoyCNJjQMZvcTx9mJGeBaO7fhCVuNOIrTCBMMQofpA0GIXpGiJoXJxvrrEHUJ16n+Ce+fwdzU</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E23DBD3A-AC1A-401F-A6C8-C6E9532D38A8}"
+      DTS:ObjectName="FTPServer">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">192.168.1.37</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{09C8C994-AD2E-4AF2-AD8B-67171AF441DB}"
+      DTS:ObjectName="LocalFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">E:\SSIS\TeachBrothersIT\Part90+\Part107</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C0F84DCC-B478-45C1-8B6A-277CA9D7808A}"
+      DTS:ObjectName="Password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">1234</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{08FA0D36-D471-4544-B687-EE977154911F}"
+      DTS:ObjectName="RemoteFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">/Part104</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{774034F9-5F0A-498B-B1DD-5AE28F89E7E6}"
+      DTS:ObjectName="UserName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">FTP_1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F911CE5C-0D67-4F56-A7E6-E1D72D8BABE0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::RemoteFolder]+&quot;/*.*&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarRemoteFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">/Part104/*.*</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FTP Task"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="FTP Task"
+      DTS:DTSID="{38BA0954-0267-4287-B73F-80CD566B9D7C}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP Task"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{B160567F-03BC-4888-9178-4D677F9C4EF4}"
+          TaskOperationType="Receive"
+          TaskIsLocalPathVar="True"
+          TaskLocalPath="$Package::LocalFolder"
+          TaskIsRemotePathVar="True"
+          TaskRemotePath="User::VarRemoteFolder"
+          TaskOverwriteDest="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\FTP Task"
+          TopLeft="326.6666536861,82.6666672314538" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

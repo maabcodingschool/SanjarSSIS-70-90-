@@ -1,0 +1,214 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2021 7:59:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DN0SVL4"
+  DTS:CreatorName="DESKTOP-DN0SVL4\satim"
+  DTS:DTSID="{5259E69F-CB1A-4781-A592-26A186124CF8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Part97"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{23174CBA-5BD9-426E-8DFA-A88DF9EDCEFB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{00B513B0-D29F-490D-B4FC-D5E532A1CD5A}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="192.168.1.37:21">
+          <DTS:FtpConnection
+            DTS:ServerName="192.168.1.37"
+            DTS:ServerUserName="FTP_1">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE1kMuvsVDkuFgzg0MJdX/wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADDIuLLH+xw8Z9dAjasHd/sBbgiZKjdbaMCxvLLZZJfCwAAAAAOgAAAAAIAACAAAADCg8HOG2r6SLC2VzXYYpwheYVAQ7/pbL9iE2bciqOC4xAAAAABtDBCNU2gYor7JeVAPutnQAAAAGC8egt2O8eTZxNkDp84hgErZi0dzG88KAq1HIJ7M/AKI8DF3reusDPQaCZTEiR51CBRZBYybMna7VfBQnGps8U</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7FEFA37E-4F96-4D0D-847D-4FD3700D25C7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9D009BA4-6FE1-4A52-9DEF-7FF2E5C5CD65}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\SSIS\TeachBrothersIT\Part90+\Part98</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{846E2984-EEDF-4595-B692-DB5B57E85473}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;/3/&quot;+replace(substring((DT_STR,50,1252) GETDATE() ,1,10),&quot;-&quot;,&quot;&quot;)+&quot;/&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RemoteFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">/3/20210504/</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Folder"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="FTP Task"
+      DTS:DTSID="{4822093E-8A00-40E7-A5CF-E763D38D4653}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Folder"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{00B513B0-D29F-490D-B4FC-D5E532A1CD5A}"
+          TaskOperationType="MakeDirRemote"
+          TaskIsRemotePathVar="True"
+          TaskRemotePath="User::RemoteFolder" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{B6D97D4A-3FE2-427B-9162-6B713EEC1B46}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{49A5FC41-8410-4BB5-BAA7-0F20B215AD01}"
+        DTS:ObjectName="{49A5FC41-8410-4BB5-BAA7-0F20B215AD01}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::LocalFolder]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="E:\SSIS\TeachBrothersIT\Part90+\Part98" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\UploadFiles"
+          DTS:CreationName="Microsoft.FtpTask"
+          DTS:Description="FTP Task"
+          DTS:DTSID="{5E3D4CBE-44A7-40E2-8317-F40B74C25B1E}"
+          DTS:ExecutableType="Microsoft.FtpTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="UploadFiles"
+          DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FtpData
+              ConnectionName="{00B513B0-D29F-490D-B4FC-D5E532A1CD5A}"
+              TaskIsLocalPathVar="True"
+              TaskLocalPath="User::FileFullPath"
+              TaskIsRemotePathVar="True"
+              TaskRemotePath="User::RemoteFolder" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{44A0181B-8A77-41F7-BAFE-3F0BCF8C6CE2}"
+          DTS:ObjectName="{44A0181B-8A77-41F7-BAFE-3F0BCF8C6CE2}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileFullPath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6AFC72CD-306C-4797-A3FB-E46868DC9BF8}"
+      DTS:From="Package\Create Folder"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Create Folder"
+          TopLeft="334.999986688297,101.400000805855" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Foreach Loop Container\UploadFiles"
+          TopLeft="32.9666529907127,21.200002190272" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="204.8,117.6"
+          Size="204.8,160.8"
+          Id="Package\Foreach Loop Container"
+          TopLeft="310.833320981927,211.466668347253" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="409.516653835112,143.000000805855">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.466667541398"
+              Start="0,0"
+              End="0,60.966667541398">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.966667541398" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

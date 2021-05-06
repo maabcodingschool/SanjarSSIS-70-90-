@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2021 7:19:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DN0SVL4"
+  DTS:CreatorName="DESKTOP-DN0SVL4\satim"
+  DTS:DTSID="{47775D4B-A2D2-4B54-BCFE-2DD3869ED796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Part95"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E5264701-BE5B-4047-B032-11997A8DC33A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{8D619638-B1E5-43CC-B571-10D4D8019FF5}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="192.168.1.37:21">
+          <DTS:FtpConnection
+            DTS:ServerName="192.168.1.37"
+            DTS:ServerUserName="FTP_1">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE1kMuvsVDkuFgzg0MJdX/wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADmew0gEA2bV4BVzSKHmfx++qaz6aTqcBMNZ7CTE7EQOwAAAAAOgAAAAAIAACAAAACpaqec6GKYIp5Cp3sRe0q3qC8SwAwdFRfNwrrO/9BVmRAAAAAXo0Hpsy3a3wKQ+hoFNWtaQAAAAMkDbfaBSz+Nq9tcCG4G/3XF9KU4mS+isUD4Smh94FSU91v2dyDmvUqRe/fX246gCiNcXFaHRfhce//O3BLy9pE</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F80C94C2-1126-431E-A5E3-023C79722BD3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RemoteFolderPathWithWildCard">
+      <DTS:VariableValue
+        DTS:DataType="8">/3/*.bmp</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FTP Task"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="FTP Task"
+      DTS:DTSID="{106EC8B1-E951-4D32-B1D5-C53878144C90}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP Task"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{8D619638-B1E5-43CC-B571-10D4D8019FF5}"
+          TaskOperationType="DeleteRemote"
+          TaskIsRemotePathVar="True"
+          TaskRemotePath="User::RemoteFolderPathWithWildCard" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\FTP Task"
+          TopLeft="411.666650308504,98.8000007851919" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2021 9:32:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DN0SVL4"
+  DTS:CreatorName="DESKTOP-DN0SVL4\satim"
+  DTS:DTSID="{958BCFE2-98D4-4493-8C27-D39348322D42}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Part109"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{674C9874-5573-4577-9592-75826602FD8C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4678281C-905D-48EB-BC81-E6080A9D1D44}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="MONTH(GETDATE())==1?&quot;Jan&quot;:&#xA;MONTH(GETDATE())==2?&quot;Feb&quot;:&#xA;MONTH(GETDATE())==3?&quot;Mar&quot;:&#xA;MONTH(GETDATE())==4?&quot;Apr&quot;:&#xA;MONTH(GETDATE())==5?&quot;May&quot;:&#xA;MONTH(GETDATE())==6?&quot;Jun&quot;:&#xA;MONTH(GETDATE())==7?&quot;Jul&quot;:&#xA;MONTH(GETDATE())==8?&quot;Aug&quot;:&#xA;MONTH(GETDATE())==9?&quot;Sep&quot;:&#xA;MONTH(GETDATE())==10?&quot;Oct&quot;:&#xA;MONTH(GETDATE())==11?&quot;Nov&quot;:&quot;Dec&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MonthName">
+      <DTS:VariableValue
+        DTS:DataType="8">May</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{61135573-7CF1-49E8-A343-0136CC9130CE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MonthNameExp">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get Short Month Name"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{D3B2775B-AF01-4ECE-A292-A2059369A755}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Short Month Name"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::MonthNameExp]=MONTH(GETDATE())==1?&quot;Jan&quot;:&#xA;MONTH(GETDATE())==2?&quot;Feb&quot;:&#xA;MONTH(GETDATE())==3?&quot;Mar&quot;:&#xA;MONTH(GETDATE())==4?&quot;Apr&quot;:&#xA;MONTH(GETDATE())==5?&quot;May&quot;:&#xA;MONTH(GETDATE())==6?&quot;Jun&quot;:&#xA;MONTH(GETDATE())==7?&quot;Jul&quot;:&#xA;MONTH(GETDATE())==8?&quot;Aug&quot;:&#xA;MONTH(GETDATE())==9?&quot;Sep&quot;:&#xA;MONTH(GETDATE())==10?&quot;Oct&quot;:&#xA;MONTH(GETDATE())==11?&quot;Nov&quot;:&quot;Dec&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Get Short Month Name"
+          TopLeft="387.499984602134,101.400000805855" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
