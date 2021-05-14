@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/8/2021 4:20:55 PM"
+  DTS:CreationDate="5/13/2021 5:23:24 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-DN0SVL4"
   DTS:CreatorName="DESKTOP-DN0SVL4\satim"
-  DTS:DTSID="{4E4E913F-B039-48DF-99D7-5615DA9FEF04}"
+  DTS:DTSID="{F50F36CE-1EFF-4A79-8BF9-3FDA3FBD39A9}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.157"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Part111"
+  DTS:ObjectName="Part127_1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{F052D21B-4F99-4BC6-917B-4EFD3AB361CC}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{D1D6D384-2FBB-43C9-83B3-A6F5FC8FCBDA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-DN0SVL4.SSIS_Parts(110+)]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{F134E647-D4E6-4BB5-91A9-4567E8DF6AC1}"
+      DTS:DTSID="{B91D8804-0949-46C6-B178-AC3AAB55A3D6}"
       DTS:ObjectName="DESKTOP-DN0SVL4.SSIS_Parts(110+)">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -27,32 +27,13 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{D99E88F4-91F4-45BC-94CF-3BE0634CB3EB}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="SPList_Obj">
-      <DTS:VariableValue
-        DTS:DataSubType="ManagedSerializable"
-        DTS:DataType="13">
-        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-          <SOAP-ENV:Body>
-            <xsd:anyType
-              id="ref-1"></xsd:anyType>
-          </SOAP-ENV:Body>
-        </SOAP-ENV:Envelope>
-      </DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Execute SQL Task"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C0B7A29F-FBBF-4E18-AA13-9A1230C812BC}"
+      DTS:DTSID="{EEFF5D00-B7BF-4384-A051-BCE2CDE2FB71}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Task"
@@ -61,13 +42,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F134E647-D4E6-4BB5-91A9-4567E8DF6AC1}"
-          SQLTask:SqlStatementSource="select DatabaseName, SchemaName, SPName  from Part112_SPList"
-          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="NewResultName"
-            SQLTask:DtsVariableName="User::SPList_Obj" />
-        </SQLTask:SqlTaskData>
+          SQLTask:Connection="{B91D8804-0949-46C6-B178-AC3AAB55A3D6}"
+          SQLTask:SqlStatementSource="Declare @id int&#xA;insert into dbo.LogSPExecution( SPName,StartTime)&#xA;values ('dbo.usp_SP1',getdate())&#xA;&#xA;Select @id=SCOPE_IDENTITY()&#xA;EXEC dbo.usp_SP1&#xA;&#xA;update dbo.LogSPExecution&#xA;set EndTime=getdate()&#xA;where id=@id&#xA;&#xA;go&#xA;&#xA;Declare @id int&#xA;insert into dbo.LogSPExecution( SPName,StartTime)&#xA;values ('dbo.usp_SP2',getdate())&#xA;&#xA;Select @id=SCOPE_IDENTITY()&#xA;EXEC dbo.usp_SP2&#xA;&#xA;update dbo.LogSPExecution&#xA;set EndTime=getdate()&#xA;where id=@id&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -86,7 +62,7 @@
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Execute SQL Task"
-          TopLeft="523.333312537936,109.200000867844" />
+          TopLeft="345.833319591152,80.6000006405513" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
