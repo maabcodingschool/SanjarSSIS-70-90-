@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Part140"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{7572732C-0283-4A76-9071-F261D45ADCA4}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{C6F41EBE-DAC1-4BDE-905F-AEB751411D3E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -107,7 +107,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchFullPath">
       <DTS:VariableValue
-        DTS:DataType="8">E:\SSIS\TeachBrothersIT\Part90+\Part140\ArchFolder\2021_05_16.zip</DTS:VariableValue>
+        DTS:DataType="8">E:\SSIS\TeachBrothersIT\Part90+\Part140\ArchFolder\2021_05_18.zip</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1194,7 +1194,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           PanelSize="379.2,233.6"
           Size="379.2,276.8"
           Id="Package\Foreach Loop Container"
-          TopLeft="324.166653785441,46.800000371933" />
+          TopLeft="339.166653189395,71.0666672314538" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
